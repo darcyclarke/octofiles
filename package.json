@@ -1,33 +1,20 @@
 {
-  "name": "app",
-  "productName": "App",
-  "version": "0.0.0",
-  "description": "",
-  "license": "MIT",
-  "repository": "user/repo",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": ""
-  },
+  "name": "octofiles",
+  "version": "1.0.0",
+  "description": "> Easily upload files to GitHub via Chrome Extension",
+  "main": "index.js",
   "scripts": {
-    "test": "xo",
-    "start": "electron .",
-    "build": "electron-packager . --out=dist --asar --overwrite --all"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "electron-debug": "^2.0.0"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darcyclarke/octofiles.git"
   },
-  "devDependencies": {
-    "devtron": "^1.4.0",
-    "electron-packager": "^12.1.0",
-    "electron": "^2.0.2",
-    "xo": "^0.21.1"
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darcyclarke/octofiles/issues"
   },
-  "xo": {
-    "envs": [
-      "node",
-      "browser"
-    ]
-  }
+  "homepage": "https://github.com/darcyclarke/octofiles#readme"
 }

@@ -23,16 +23,16 @@ if (isOctofiles) {
         (<a href="${f[2]}">${f[2]}</a>)
       </li>
     `)
-    const text = files.map(f => `${f[2]}\n`)
-    const markdown = files.map(f => `![${f[1]}](${f[2]})\n`)
+    const text = files.map(f => f[2]).join('\n')
+    const markdown = files.map(f => `[${f[1]}](${f[2]})`).join('\n')
     return `
       <section>
         <svg width="100" height="100" class="octicon octicon-check" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>
         <h1>Uploaded ${files.length} file${files.length === 1 ? '' : 's'}!</h1>
         <ul class="copy">${list}</ul>
-        <input type="text" value="${text}">
+        <textarea>${text}</textarea>
         <button class="btn copy">Copy as Plain Text</button>
-        <input type="text" value="${markdown}">
+        <textarea>${markdown}</textarea>
         <button class="btn copy">Copy as Markdown</button>
       </section>
     `
@@ -49,7 +49,7 @@ if (isOctofiles) {
     }
     #issue_body,
     .octofiles,
-    .octofiles input[type="text"] {
+    .octofiles textarea {
       position: fixed;
       top: 0;
       left: 0;
@@ -64,7 +64,7 @@ if (isOctofiles) {
       outline: none ${i};
     }
     #issue_body,
-    .octofiles input[type="text"] {
+    .octofiles textarea {
       color: transparent ${i};
       background: white ${i};
       opacity: 0 ${i};

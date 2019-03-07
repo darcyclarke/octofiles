@@ -29,6 +29,7 @@
     }
   ],
   "permissions": [
+    "activeTab",
     "*://github.com/*"
   ]
 }

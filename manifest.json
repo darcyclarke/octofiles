@@ -29,10 +29,6 @@
     }
   ],
   "permissions": [
-    "activeTab",
-    "tabs",
-    "http://*/*",
-    "https://*/*",
-    "<all_urls>"
+    "*://github.com/*"
   ]
 }

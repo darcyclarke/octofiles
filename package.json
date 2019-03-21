@@ -4,7 +4,6 @@
   "description": "> Easily upload files to GitHub via Chrome Extension",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "git archive -o ./dist/build-$npm_package_version.zip HEAD",
     "release": "source .env && webstore upload --source=./dist/build-$npm_package_version --auto-publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN"
   },

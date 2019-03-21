@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "git archive -o ./dist/extension-build-$npm_package_version.zip HEAD"
+    "build": "git archive -o ./dist/build-$npm_package_version.zip HEAD",
+    "release": "source .env && webstore upload --source=./dist/build-$npm_package_version --auto-publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN"
   },
   "repository": {
     "type": "git",
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/darcyclarke/octofiles/issues"
   },
-  "homepage": "https://github.com/darcyclarke/octofiles#readme"
+  "homepage": "https://github.com/darcyclarke/octofiles#readme",
+  "devDependencies": {
+    "chrome-webstore-upload-cli": "^1.2.0"
+  }
 }

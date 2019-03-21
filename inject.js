@@ -20,11 +20,16 @@ if (isOctofiles) {
       <li>
         <svg width="18" height="18" class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>&nbsp;
         <strong>${f[1]}</strong>&nbsp;
-        (<a href="${f[2]}">${f[2]}</a>)
+        (<a href="${f[2]}" target="_blank" rel="noopener">${f[2]}</a>)
       </li>
     `)
     const text = files.map(f => f[2]).join('\n')
-    const markdown = files.map(f => `[${f[1]}](${f[2]})`).join('\n')
+    const markdown = files.map(f => {
+      const types = ['gif', 'jpeg', 'jpg', 'png']
+      const ext = f.split('.').pop()
+      const i = (types.indexOf(ext) >= 0) ? '!' : ''
+      return `${i}[${f[1]}](${f[2]})`
+    }).join('\n')
     return `
       <section>
         <svg width="100" height="100" class="octicon octicon-check" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M12 5l-8 8-4-4 1.5-1.5L4 10l6.5-6.5L12 5z"></path></svg>

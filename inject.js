@@ -26,7 +26,7 @@ if (isOctofiles) {
     const text = files.map(f => f[2]).join('\n')
     const markdown = files.map(f => {
       const types = ['gif', 'jpeg', 'jpg', 'png']
-      const ext = f.split('.').pop()
+      const ext = f[2].toLowerCase().split('.').pop()
       const i = (types.indexOf(ext) >= 0) ? '!' : ''
       return `${i}[${f[1]}](${f[2]})`
     }).join('\n')

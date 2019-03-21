@@ -3,7 +3,7 @@
   "name": "octofiles",
   "author": "Darcy Clarke <darcy@darcyclarke.me>",
   "description": "Easily upload files to GitHub & get back URLs to copy",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "homepage_url": "https://github.com/darcyclarke/octofiles",
   "incognito": "spanning",
   "offline_enabled": true,
@@ -23,9 +23,13 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://github.com/darcyclarke/octofiles/*"],
+      "matches": [
+        "*://github.com/darcyclarke/octofiles/*"
+      ],
       "run_at": "document_end",
-      "js": ["inject.js"]
+      "js": [
+        "inject.js"
+      ]
     }
   ],
   "permissions": [

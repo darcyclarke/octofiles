@@ -1,14 +1,14 @@
 {
   "name": "octofiles",
-  "version": "0.1.3",
+  "version": "0.1.2",
   "description": "> Easily upload files to GitHub via Chrome Extension",
   "main": "app.js",
   "scripts": {
     "set-manifest-version": "node ./scripts/set-manifest-version.js",
     "compress": "zip  -x '.*' './node_modules/*' './dist/*' './scripts/*' -r ./dist/build-$npm_package_version.zip .",
     "build": "npm run set-manifest-version && npm run compress",
-    "upload": "source .env && webstore upload --source=./dist/build-$npm_package_version.zip --extension-id $EXTENSION_ID",
-    "publish": "source .env && webstore publish --extension-id $EXTENSION_ID",
+    "upload": "source .env && webstore upload --source=./dist/build-$npm_package_version.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN",
+    "publish": "source .env && webstore publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN",
     "edit": "source .env && open https://chrome.google.com/webstore/developer/edit/$EXTENSION_ID",
     "release": "np && npm run build && npm run upload && npm run publish"
   },

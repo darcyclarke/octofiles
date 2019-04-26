@@ -6,12 +6,10 @@
   "version": "0.1.7",
   "homepage_url": "https://github.com/darcyclarke/octofiles",
   "incognito": "spanning",
-  "offline_enabled": true,
   "background": {
     "scripts": [
       "app.js"
-    ],
-    "persistent": false
+    ]
   },
   "icons": {
     "16": "icon-16.png",

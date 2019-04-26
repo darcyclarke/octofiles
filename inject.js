@@ -1,5 +1,5 @@
 const urlParams = new URLSearchParams(window.location.search)
-const isOctofiles = urlParams.get('octofiles')
+const isOctofiles = urlParams.has('octofiles')
 if (isOctofiles) {
   const baseTemplate = () => `
     <section>

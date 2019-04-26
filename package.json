@@ -7,7 +7,8 @@
     "ext:version": "node ./scripts/set-manifest-version.js",
     "ext:compress": "zip -x '.*' './node_modules/*' './dist/*' './scripts/*' -r ./dist/build-$npm_package_version.zip .",
     "ext:build": "npm run ext:version && npm run ext:compress",
-    "ext:publish": "source .env && webstore upload --source=./dist/build-$npm_package_version.zip --auto-publish --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN",
+    "ext:publish:ws": "source .env && webstore upload --source=./dist/build-$npm_package_version.zip --auto-publish --extension-id $WS_ID --client-id $WS_CLIENT_ID --client-secret $WS_CLIENT_SECRET --refresh-token $WS_REFRESH_TOKEN",
+    "ext:publish:aom": "source .env && web-ext-submit -s=./ -a=./dist/ --id $AOM_ID --api-key $AOM_API_KEY --api-secret $AOM_API_SECRET ",
     "ext:edit": "open https://chrome.google.com/webstore/developer/dashboard",
     "ext:release": "npm run publish && npm run edit"
   },
@@ -23,6 +24,7 @@
   },
   "homepage": "https://github.com/darcyclarke/octofiles#readme",
   "devDependencies": {
-    "chrome-webstore-upload-cli": "^1.2.0"
+    "chrome-webstore-upload-cli": "^1.2.0",
+    "web-ext-submit": "^3.0.0"
   }
 }

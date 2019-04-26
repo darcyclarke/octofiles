@@ -9,5 +9,5 @@
 ![screen](https://user-images.githubusercontent.com/459713/53932771-50a14200-4069-11e9-9ffb-69cea6ecad44.gif)
 
 # Install
-[Install the Chrome Extension](https://chrome.google.com/webstore/detail/octofiles/dbbinlnmlpconpmbecdekkpbhiibhghi)
-[Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/edit)
+- [Install the Chrome Extension](https://chrome.google.com/webstore/detail/octofiles/dbbinlnmlpconpmbecdekkpbhiibhghi)
+- [Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/edit)

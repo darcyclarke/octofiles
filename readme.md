@@ -15,13 +15,13 @@
 - [Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/edit)
 
 # FAQ
-- Q. How long do files live for? 
+- **Q. How long do files live for?**
   - As long as GitHub is around.
-- Q. Who can access these files?
+- **Q. Who can access these files?**
   - Anyone that has the link. All files uploaded to issues/prs are, essentially, publically available, even against private repos ([read more here](https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests))
-- Q. How big can the files be?
+- **Q. How big can the files be?**
   - 10MB for image files and 25MB for everything else.
-- Q. What file types are supported?
+- **Q. What file types are supported?**
   - PNG (.png)
   - GIF (.gif)
   - JPEG (.jpg)

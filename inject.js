@@ -2,17 +2,34 @@ const urlParams = new URLSearchParams(window.location.search)
 const isOctofiles = urlParams.has('octofiles')
 if (isOctofiles) {
   const baseTemplate = () => {
-    const list = `<a href=""><img src=""></a>`
     return `
-    <section>
-      <div class="d-md-flex flex-wrap mb-4">
-        ${list}
+      <section>
+        <svg width="100" height="100" class="octicon octicon-cloud-upload" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M7 9H5l3-3 3 3H9v5H7V9zm5-4c0-.44-.91-3-4.5-3C5.08 2 3 3.92 3 6 1.02 6 0 7.52 0 9c0 1.53 1 3 3 3h3v-1.3H3c-1.62 0-1.7-1.42-1.7-1.7 0-.17.05-1.7 1.7-1.7h1.3V6c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V12h2c2.08 0 4-1.16 4-3.5C16 6.06 14.08 5 12 5z"></path></svg>
+        <h1>Drag & Drop Files</h1>
+        <h5>File types supported: <strong>GIF, JPEG, JPG, PNG, DOCX, GZ, LOG, PDF, PPTX, TXT, XLSX or ZIP</strong>.</h3>
+        <h5>The maximum size for files is <strong>25MB</strong> & the maximum size for images is <strong>10MB</strong>.</h3>
+        <hr>
+        ${uploadsTemplate()}
+      </secton>
+    `
+  }
+
+  const uploadsTemplate = () => {
+    const list = _data.map(f => {
+      return `
+        <a href="${f[2]}">
+          <span class="image" style="background-image:url(${f[2]}")></span>
+          <span class="name">${f[1]}</span>
+        </a>
+      `
+    }).join('')
+    return `
+      <div class="uploads">
+        <h3>Previous Uploads</h3>
+        <div class="listing">
+          ${list}
+        </div>
       </div>
-      <svg width="100" height="100" class="octicon octicon-cloud-upload" viewBox="0 0 16 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M7 9H5l3-3 3 3H9v5H7V9zm5-4c0-.44-.91-3-4.5-3C5.08 2 3 3.92 3 6 1.02 6 0 7.52 0 9c0 1.53 1 3 3 3h3v-1.3H3c-1.62 0-1.7-1.42-1.7-1.7 0-.17.05-1.7 1.7-1.7h1.3V6c0-1.39 1.56-2.7 3.2-2.7 2.55 0 3.13 1.55 3.2 1.8v1.2H12c.81 0 2.7.22 2.7 2.2 0 2.09-2.25 2.2-2.7 2.2h-2V12h2c2.08 0 4-1.16 4-3.5C16 6.06 14.08 5 12 5z"></path></svg>
-      <h1>Drag & Drop Files</h1>
-      <h5>File types supported: <strong>GIF, JPEG, JPG, PNG, DOCX, GZ, LOG, PDF, PPTX, TXT, XLSX or ZIP</strong>.</h3>
-      <h5>The maximum size for files is <strong>25MB</strong> & the maximum size for images is <strong>10MB</strong>.</h3>
-    </secton>
     `
   }
 
@@ -46,6 +63,8 @@ if (isOctofiles) {
         <button class="btn copy">Copy as Plain Text</button>
         <textarea>${markdown}</textarea>
         <button class="btn copy">Copy as Markdown</button>
+        <hr>
+        ${uploadsTemplate()}
       </section>
     `
   }
@@ -53,16 +72,21 @@ if (isOctofiles) {
     <section>
     </section>
   `
+  const prop = (p, o) => p.reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, o)
+  const store = (chrome && !!prop(['storage', 'local'], chrome)) ? chrome.storage.local : browser.storage.local
   const $field = document.querySelector('#issue_body')
   const $container = document.createElement('div')
   const $body = document.querySelector('body')
+  var _data = []
 
-  $container.className = 'octofiles'
-  $container.innerHTML = baseTemplate()
-  $body.prepend($container)
-
-  $field.placeholder = ''
-  $field.value = ''
+  store.get(['files'], (data) => {
+    _data = !!data.length ? data : []
+    $container.className = 'octofiles'
+    $container.innerHTML = baseTemplate()
+    $body.prepend($container)
+    $field.placeholder = ''
+    $field.value = ''
+  })
 
   function copy (e) {
     if (e.target.classList.contains('copy')) {
@@ -85,6 +109,8 @@ if (isOctofiles) {
     if (isUploading) {
       $container.innerHTML = uploadingTemplate()
     } else {
+      _data = files.concat(_data)
+      store.set({ files: _data }, res => console.log(res))
       $container.innerHTML = uploadedTemplate(files)
       $field.value = ''
     }

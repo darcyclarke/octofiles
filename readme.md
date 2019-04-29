@@ -16,11 +16,11 @@
 
 # FAQ
 - **Q. How long do files live for?**
-  - As long as GitHub is around.
+  - Forever (or as long as GitHub is around).
 - **Q. Who can access these files?**
   - Anyone that has the link. All files uploaded to issues/prs are, essentially, publically available, even against private repos ([read more here](https://help.github.com/en/articles/file-attachments-on-issues-and-pull-requests))
 - **Q. How big can the files be?**
-  - 10MB for image files and 25MB for everything else.
+  - **10MB** for image files and **25MB** for everything else.
 - **Q. What file types are supported?**
   - PNG (.png)
   - GIF (.gif)
@@ -30,3 +30,5 @@
   - Text files (.txt)
   - PDFs (.pdf)
   - ZIP (.zip, .gz)
+- **Q. Are there any other limitations?**
+  - The web extension stores references to previous uploaded files for listing/management purposes later on via [extension storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) which has a limit of **5MB** before there may be data loss. Theoretically, you'll never hit this limit and experience any issues.

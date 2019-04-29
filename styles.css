@@ -1,0 +1,86 @@
+body {
+  overflow-x: hidden;
+}
+#issue_body,
+.octofiles,
+.octofiles textarea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 100vw !important;
+  max-height: 100vh !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 99999 !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  border: none !important;
+  outline: none !important;
+}
+#issue_body,
+.octofiles textarea {
+  color: transparent !important;
+  background: white !important;
+  opacity: 0 !important;
+}
+.octofiles {
+  pointer-events: none;
+  z-index: 999999 !important;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.octofiles.dark {
+  background: #24292e;
+  color: white;
+}
+.octofiles button,
+.octofiles ul {
+  pointer-events: all;
+}
+.octofiles ul {
+  max-width: 600px;
+  padding: 40px;
+  border-radius: 5px;
+  border: 1px solid #ececec;
+}
+.octofiles ul li {
+  display: block;
+  text-align: left;
+  padding: 0;
+}
+.octofiles ul li strong {
+  font-size: 16px;
+}
+.octofiles ul li a {
+  font-size: 12px;
+}
+.octofiles h1,
+.octofiles h2,
+.octofiles h3,
+.octofiles h4,
+.octofiles h5,
+.octofiles ul,
+.octofiles ul li {
+  display: block;
+  margin: 0 0 15px 0;
+}
+.octofiles ul li:last-child {
+  margin: 0;
+}
+.octofiles svg path {
+  fill: #24292e;
+}
+.octofiles .octicon-sync {
+  animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(359deg);
+  }
+}

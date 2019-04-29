@@ -80,7 +80,7 @@ if (isOctofiles) {
   var _data = []
 
   store.get(['files'], (data) => {
-    _data = !!data.length ? data : []
+    _data = ( data && data.files) ? data.files : []
     $container.className = 'octofiles'
     $container.innerHTML = baseTemplate()
     $body.prepend($container)
@@ -110,7 +110,7 @@ if (isOctofiles) {
       $container.innerHTML = uploadingTemplate()
     } else {
       _data = files.concat(_data)
-      store.set({ files: _data }, res => console.log(res))
+      store.set({ files: _data })
       $container.innerHTML = uploadedTemplate(files)
       $field.value = ''
     }

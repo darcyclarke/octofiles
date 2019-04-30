@@ -8,7 +8,7 @@
 
 **octofiles** takes advantage of GitHub's existing issue file upload capabilities... just makes it waaaay easier to use & copy/paste post-upload. You can also keep track of and remove files utilizing the local extension storage.
 
-![screen](https://user-images.githubusercontent.com/459713/56985732-044d1c80-6b57-11e9-86a4-04efe1dd5d7d.gif)
+<img src="https://user-images.githubusercontent.com/459713/56985732-044d1c80-6b57-11e9-86a4-04efe1dd5d7d.gif" width="100%" height="auto">
 
 # Install
 - [Install the Chrome Extension](https://chrome.google.com/webstore/detail/octofiles/dbbinlnmlpconpmbecdekkpbhiibhghi)

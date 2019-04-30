@@ -8,7 +8,6 @@ if (isOctofiles) {
         <h1>Drag & Drop Files</h1>
         <h5>File types supported: <strong>GIF, JPEG, JPG, PNG, DOCX, GZ, LOG, PDF, PPTX, TXT, XLSX or ZIP</strong>.</h3>
         <h5>The maximum size for files is <strong>25MB</strong> & the maximum size for images is <strong>10MB</strong>.</h3>
-        <hr>
         ${uploadsTemplate()}
       </secton>
     `
@@ -16,18 +15,24 @@ if (isOctofiles) {
 
   const uploadsTemplate = () => {
     const list = _data.map(f => {
+      const ext = f[2].toLowerCase().split('.').pop()
+      const className = (types.indexOf(ext) >= 0) ? '' : 'bg-file'
       return `
-        <a href="${f[2]}">
-          <span class="image" style="background-image:url(${f[2]}")></span>
-          <span class="name">${f[1]}</span>
+        <a href="${f[2]}" target="_blank" rel="noopener">
+          <span class="image ${className}" style="background-image:url(${f[2]}")><svg class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg></span>
+          <span class="name">${f[2]}</span>
+          <button class="remove-upload">x</button>
         </a>
       `
     }).join('')
     return `
       <div class="uploads">
-        <h3>Previous Uploads</h3>
         <div class="listing">
+        <h3 class="full">Previous Uploads</h3>
           ${list}
+          <div class="clear">
+            <button class="btn toggle-uploads">See all uploads</button>
+          </div>
         </div>
       </div>
     `
@@ -46,10 +51,9 @@ if (isOctofiles) {
         <strong>${f[1]}</strong>&nbsp;
         (<a href="${f[2]}" target="_blank" rel="noopener">${f[2]}</a>)
       </li>
-    `)
+    `).join('')
     const text = files.map(f => f[2]).join('\n')
     const markdown = files.map(f => {
-      const types = ['gif', 'jpeg', 'jpg', 'png']
       const ext = f[2].toLowerCase().split('.').pop()
       const i = (types.indexOf(ext) >= 0) ? '!' : ''
       return `${i}[${f[1]}](${f[2]})`
@@ -63,7 +67,6 @@ if (isOctofiles) {
         <button class="btn copy">Copy as Plain Text</button>
         <textarea>${markdown}</textarea>
         <button class="btn copy">Copy as Markdown</button>
-        <hr>
         ${uploadsTemplate()}
       </section>
     `
@@ -73,6 +76,7 @@ if (isOctofiles) {
     </section>
   `
   const prop = (p, o) => p.reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, o)
+  const types = ['gif', 'jpeg', 'jpg', 'png']
   const store = (chrome && !!prop(['storage', 'local'], chrome)) ? chrome.storage.local : browser.storage.local
   const $field = document.querySelector('#issue_body')
   const $container = document.createElement('div')
@@ -97,6 +101,31 @@ if (isOctofiles) {
     }
   }
 
+  function open (e) {
+    if (e.target.classList.contains('toggle-uploads')) {
+      const $uploads = document.querySelector('.octofiles .uploads')
+      if ($uploads.classList.contains('open')) {
+        $uploads.classList.remove('open')
+        e.target.innerText = 'See all uploads'
+      } else {
+        $uploads.classList.add('open')
+        e.target.innerText = 'Back to uploading'
+      }
+    }
+  }
+
+  function remove (e) {
+    if (e.target.classList.contains('remove-upload')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const $link = e.target.parentNode
+      const id = Array.from($link.parentNode.children).indexOf($link)
+      _data.splice(id-1, id)
+      store.set({ files: _data })
+      $link.remove()
+    }
+  }
+
   function check() {
     let files = $field.value.match(/\[(.*?)\]\((.*?)\)/g)
     let images = $field.value.match(/<img.*?src=['"](.*?)['"]/g)
@@ -117,4 +146,6 @@ if (isOctofiles) {
   }
   $field.addEventListener('change', check)
   $body.addEventListener('click', copy)
+  $body.addEventListener('click', open)
+  $body.addEventListener('click', remove)
 }

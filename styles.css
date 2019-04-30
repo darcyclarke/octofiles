@@ -85,24 +85,74 @@ body {
   }
 }
 
+.octofiles .copy {
+  margin: auto auto 20px;
+  max-height: 30vh;
+  overflow: scroll;
+}
+
 .octofiles .uploads {
-  pointer-events: all;
+  margin-top: 40px;
 }
 
 .octofiles .listing {
   display: flex;
   flex-wrap: wrap;
   padding: 0 5%;
-  align-items: center;
+  align-items: start;
   justify-content: center;
+  border: 1px solid #efefef;
+  overflow: scroll;
+  margin: 0 5%;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+}
+
+.octofiles .uploads.open .listing {
+  border: none;
+  border-radius: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  pointer-events: all;
+  background: white;
+  z-index: 999999999;
+  margin: 0;
+}
+
+.octofiles .uploads.open .listing .btn {
+  position: absolute;
+  top: 20px;
+  right: 20px
+}
+
+.octofiles .listing .full {
+  width: 100%;
+  margin: 0 0 20px;
 }
 
 .octofiles .listing a {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0 15px 15px 0;
+  margin: 0;
+  padding: 5px;
+  width: 15%;
+  position: relative;
+  pointer-events: all;
+}
+
+.octofiles .uploads.open .listing a {
+  display: flex !important;
+}
+
+.octofiles .listing a:nth-child(-n+7) {
+  display: flex;
 }
 
 .octofiles .listing a span {
@@ -112,21 +162,77 @@ body {
 }
 
 .octofiles .listing a .image {
-  width: 100px;
-  height: 100px;
-  margin: 0 5px 0 0;
+  width: 100%;
+  height: 0;
+  padding: 0 0 100% 0;
+  display: flex;
   border-radius: 3px;
   text-decoration: none;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
   background-color: #efefef;
+  text-align: center;
+  margin: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  position: relative;
+}
+
+.octofiles .listing a .image:not(.bg-file) svg {
+  display: none;
+}
+
+.octofiles .listing a .image.bg-file svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 25%;
+  display: block;
 }
 
 .octofiles .listing a .name {
   font-weight: bold;
-  font-size: 12px;
+  font-size: 10px;
   padding: 5px 0;
+  word-wrap: break-word;
+  width: 100%;
+  display: block;
+}
+
+.octofiles .uploads.open .listing a:hover .remove-upload {
+  display: flex;
+}
+
+.octofiles .listing .clear {
+  width: 100%;
+  text-align: center;
+}
+
+.octofiles .listing .remove-upload {
+  background: red;
+  width: 24px;
+  height: 24px;
+  border: none;
+  color: white;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: none;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 100%;
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 .octofiles .uploads h3 {

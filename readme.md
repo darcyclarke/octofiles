@@ -3,12 +3,12 @@
 <h1 align="center">octofiles</h1>
 
 <blockquote>
-  <p align="center">Browser Extension to easily upload files to GitHub</p>
+  <p align="center">Browser Extension to easily upload/manage files on GitHub</p>
 </blockquote>
 
-**octofiles** takes advantage of GitHub's existing issue file upload capabilities... just makes it waaaay easier to use & copy/paste post-upload
+**octofiles** takes advantage of GitHub's existing issue file upload capabilities... just makes it waaaay easier to use & copy/paste post-upload. You can also keep track of and remove files utilizing the local extension storage.
 
-![screen](https://user-images.githubusercontent.com/459713/53932771-50a14200-4069-11e9-9ffb-69cea6ecad44.gif)
+![screen](https://user-images.githubusercontent.com/459713/56985732-044d1c80-6b57-11e9-86a4-04efe1dd5d7d.gif)
 
 # Install
 - [Install the Chrome Extension](https://chrome.google.com/webstore/detail/octofiles/dbbinlnmlpconpmbecdekkpbhiibhghi)

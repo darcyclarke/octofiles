@@ -1,6 +1,6 @@
 {
   "name": "octofiles",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "> Easily upload files to GitHub via Chrome Extension",
   "main": "app.js",
   "scripts": {

@@ -12,7 +12,7 @@
 
 # Install
 - [Install the Chrome Extension](https://chrome.google.com/webstore/detail/octofiles/dbbinlnmlpconpmbecdekkpbhiibhghi)
-- [Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/edit)
+- [Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/)
 
 # FAQ
 - **Q. How long do files live for?**

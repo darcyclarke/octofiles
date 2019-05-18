@@ -15,6 +15,8 @@
 - [Install the Firefox Add-on](https://addons.mozilla.org/en-US/developers/addon/octofiles/)
 
 # FAQ
+- **Q. Are there any requirements?**
+  - You must have a GitHub account
 - **Q. How long do files live for?**
   - Forever (or as long as GitHub is around).
 - **Q. Who can access these files?**

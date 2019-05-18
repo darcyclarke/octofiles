@@ -22,7 +22,7 @@
   "content_scripts": [
     {
       "matches": [
-        "*://github.com/darcyclarke/octofiles/*"
+        "*://github.com/darcyclarke/octofiles/*?octofiles"
       ],
       "run_at": "document_end",
       "js": [

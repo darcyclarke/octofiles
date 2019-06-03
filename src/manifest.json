@@ -3,7 +3,7 @@
   "name": "octofiles",
   "author": "Darcy Clarke <darcy@darcyclarke.me>",
   "description": "Easily upload files to GitHub & get back URLs to copy",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "homepage_url": "https://github.com/darcyclarke/octofiles",
   "incognito": "spanning",
   "background": {

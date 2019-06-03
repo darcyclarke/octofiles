@@ -21,7 +21,7 @@ if (isOctofiles) {
       return `
         <a href="${f[2]}" target="_blank" rel="noopener">
           <span class="image ${className}" style="background-image:url(${f[2]}")><svg class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg></span>
-          <span class="name">${f[2]}</span>
+          <span class="name">${f[1].split('/').pop()}.${ext}</span>
           <button class="remove-upload">x</button>
         </a>
       `
@@ -50,7 +50,7 @@ if (isOctofiles) {
   }
 
   const uploadedTemplate = (files) => {
-    document.title = 'Uploaded Files 📂'
+    document.title = 'Upload Files ⬆️'
     const list = files.map(f => `
       <li>
         <svg width="18" height="18" class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>&nbsp;

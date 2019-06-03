@@ -1,14 +1,14 @@
 {
   "name": "octofiles",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "> Easily upload files to GitHub via Chrome Extension",
   "main": "app.js",
   "scripts": {
     "version": "node ./scripts/set-manifest-version.js",
     "compress": "cd ./src/ && zip -r ../dist/build-$npm_package_version.zip .",
-    "build": "npm run ext:version && npm run ext:compress",
-    "publish:ws": "source .env && webstore upload --source=./dist/build-$npm_package_version.zip --auto-publish --extension-id $WS_ID --client-id $WS_CLIENT_ID --client-secret $WS_CLIENT_SECRET --refresh-token $WS_REFRESH_TOKEN",
-    "publish:aom": "cd ./src/ && source .env && web-ext-submit -s=. -a=../dist/ --id $AOM_ID --api-key $AOM_API_KEY --api-secret $AOM_API_SECRET ",
+    "build": "npm run version && npm run compress",
+    "publish:ws": "source .env && cd ./src/ && webstore upload --source=./dist/build-$npm_package_version.zip --auto-publish --extension-id $WS_ID --client-id $WS_CLIENT_ID --client-secret $WS_CLIENT_SECRET --refresh-token $WS_REFRESH_TOKEN",
+    "publish:aom": "source .env && cd ./src/ && web-ext-submit -s=. -a=../dist/ --id $AOM_ID --api-key $AOM_API_KEY --api-secret $AOM_API_SECRET ",
     "edit": "open https://chrome.google.com/webstore/developer/dashboard",
     "release": "npm run publish && npm run edit"
   },

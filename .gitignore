@@ -4,3 +4,4 @@ node_modules
 *.zip
 .DS_Store
 web-ext-artifacts
+/test

@@ -26,11 +26,13 @@
 - **Q. What file types are supported?**
   - PNG (.png)
   - GIF (.gif)
-  - JPEG (.jpg)
+  - JPEG (.jpg, .jpeg)
+  - SVG (.svg)
   - Log files (.log)
   - Microsoft Word (.docx), Powerpoint (.pptx), and Excel (.xlsx) documents
   - Text files (.txt)
   - PDFs (.pdf)
   - ZIP (.zip, .gz)
+  - Video (.mp4, .mov, .webm)
 - **Q. Are there any other limitations?**
   - The web extension stores references to previous uploaded files for listing/management purposes later on via [extension storage](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/storage/local) which has a limit of **5MB** before there may be data loss. Theoretically, you'll never hit this limit and experience any issues.
